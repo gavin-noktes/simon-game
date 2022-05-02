@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simon Game</title>
+    <link rel="stylesheet" href="./index.css" />
+    <script>
+      (async () => {
+        let response = await fetch(
+          "../target/wasm32-unknown-unknown/release/create_task.wasm"
+        );
+        let bytes = await response.arrayBuffer();
+        let { instance } = await WebAssembly.instantiate(bytes, {});
+        instance.exports.main();
+      })();
+    </script>
+  </head>
+  <body>
+    <header>
+      <p id="user_score">High Score: 0</p>
+    </header>
+    <main class="game_container">
+      <div id="green_button" class="button green"></div>
+      <div id="red_button" class="button red"></div>
+      <div id="yellow_button" class="button yellow"></div>
+      <div id="blue_button" class="button blue"></div>
+    </main>
+  </body>
+</html>
