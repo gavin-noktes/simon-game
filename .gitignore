@@ -1,11 +1,7 @@
-/target
-.history
-dist
-.lh
-
-# Added by cargo
-#
-# already existing elements were commented out
-
-#/target
+target
 Cargo.lock
+pkg/
+wasm-pack.log
+node_modules
+dist
+*.log
